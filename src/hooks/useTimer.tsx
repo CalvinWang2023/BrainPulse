@@ -1,24 +1,29 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { setElapsedTime, setTimerComplete } from "../slices/timerSlice";
+import { setElapsedTime, setTimerComplete, setDelayTime } from "../slices/timerSlice";
 
 const useTimer = () => {
-    const { initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
+    const { delay, initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (elapsedTime >= initialTime) {
-            dispatch(setTimerComplete());
-        }
+        if (elapsedTime >= initialTime) dispatch(setTimerComplete());
         let interval: ReturnType<typeof setInterval>;
-        if (isTimerStop === false) {
+
+        if (delay > 0) {
+            interval = setInterval(() => {
+                dispatch(setDelayTime(1));
+            }, 1000);
+        }
+
+        if (isTimerStop === false && delay <= 0) {
             interval = setInterval(() => {
                 dispatch(setElapsedTime(0.1));
             }, 100);
         }
 
         return () => clearInterval(interval);
-    }, [isTimerStop, elapsedTime]);
+    }, [isTimerStop, elapsedTime, delay]);
 }
 
 export default useTimer
