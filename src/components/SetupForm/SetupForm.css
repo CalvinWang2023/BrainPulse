@@ -1,0 +1,72 @@
+form {
+    width: 35rem;
+    background-color: var(--alt-bg);
+    box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
+    padding: 1.25rem;
+    display: grid;
+    gap: 30px;
+}
+
+.setup-container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: var(--label-clr);
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 1.3rem;
+    letter-spacing: 1.1px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+ul li {
+    width: 100%;
+}
+ul li button {
+    background-color: var(--inp-bg);
+    color: var(--text-clr);
+} 
+ul li button:hover { 
+    background-color: var(--inp-bg-hvr);
+}
+
+ul li button.active {
+    background-color: var(--btn-bg);
+}
+ul li button.active:hover {
+    background-color: var(--btn-bg-hvr);
+}
+
+select {
+    background-color: var(--inp-bg);
+    color: var(--text-clr);
+}
+select::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: var(--alt-bg);
+}
+select::-webkit-scrollbar-thumb {
+    background-color: var(--text-clr);
+    border-radius: 0.3rem;  
+}
+
+button[type="submit"] {
+    background-color: var(--submit-bg);
+    color: var(--text-clr);
+}
+
+button[type="submit"]:hover {
+    background-color: var(--submit-bg-hvr);
+}
+
+@media (max-width: 750px) {
+    form {
+        width: 80%;
+    }
+}
