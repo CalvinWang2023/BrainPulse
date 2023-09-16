@@ -1,13 +1,9 @@
-import axios from "axios";
+import get from 'axios';
 
-const apiInstance = axios.create({
-    baseURL: 'https://opentdb.com/api.php',
-    timeout: 5000,
-});
-
-const getQuizApi = async (params: FormState) => {
-    const { result } = (await apiInstance.get('', { params })).data;
-    return result;
+const API_URL = 'https://opentdb.com/api.php';
+const getQuestionsProxy = async (params: FormState) => {
+  const { results } = (await get(API_URL, { params, timeout: 5000 })).data;
+  return results;
 };
-  
-export default getQuizApi;
+
+export default getQuestionsProxy;
