@@ -1,8 +1,9 @@
 form {
     width: 35rem;
     background-color: var(--alt-bg);
+    border-radius: 12px;
     box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
-    padding: 1.25rem;
+    padding: 2rem;
     display: grid;
     gap: 30px;
 }
