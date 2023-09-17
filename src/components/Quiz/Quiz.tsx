@@ -6,11 +6,14 @@ import './Quiz.css';
 import { useEffect } from "react";
 import { setCurrentIndex } from "../../slices/quizSlice";
 import { setTimerStart } from "../../slices/timerSlice";
+import Results from "../Results/Results";
+import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
     useQuizFetch();
     const dispatch = useAppDispatch();
-    const { isLoading, questions, currentIndex } = useAppSelector((state) => state.quiz);
+    const navigate = useNavigate();
+    const { isLoading, questions, currentIndex, isQuizCompleted } = useAppSelector((state) => state.quiz);
     const { isTimerStop } = useAppSelector((state) => state.timer);
 
     useEffect(() => {
@@ -18,14 +21,17 @@ const Quiz = () => {
             dispatch(setTimerStart());
             dispatch(setCurrentIndex());
         }
-    }, [isTimerStop]);
+        if (isQuizCompleted) {
+            navigate('/Results');
+        }
+    }, [isTimerStop, isQuizCompleted]);
     
     return !isLoading && (
         <div className="quiz-container">
             <Question { ...questions[currentIndex] } />
             <Timer />
         </div>
-    );    
+    );
 }
 
 export default Quiz
