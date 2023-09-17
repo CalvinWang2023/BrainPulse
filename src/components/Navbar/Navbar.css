@@ -2,13 +2,13 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: var(--alt-bg);
     padding: 1.5rem 4rem;
     border-radius: 0 0 90px 90px;
 }
 
 .nav-logo {
-    margin-right: auto;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -23,6 +23,21 @@
 .nav-logo svg {
     width: 30px;
     height: 30px;
+}
+
+.nav-progressbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-transform: uppercase;
+}
+.nav-progressbar p {
+    color: var(--bg-clr);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.progress-bar {
+    width: 40rem;
 }
 
 @media (max-width: 750px) {

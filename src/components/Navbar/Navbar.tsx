@@ -15,8 +15,14 @@ const Navbar: React.FC<NavbarProps> = ({ quizInProgress }) => {
                 <JoyStick />
                 <h1>BrainPulse</h1>
             </div>
-
-            {quizInProgress && <ProgressBar total={questions.length} current={currentIndex} />}
+            
+            {quizInProgress && 
+                <div className="nav-progressbar">
+                    <p>Quiz Progress: {currentIndex} / {questions.length}</p>
+                    <ProgressBar total={questions.length} current={currentIndex} />
+                </div>
+                
+            }
 
             <div className="nav-button">
                 <button>demo</button>
