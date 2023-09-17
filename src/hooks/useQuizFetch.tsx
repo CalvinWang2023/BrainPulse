@@ -10,9 +10,15 @@ const useQuizFetch = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data: Question[] = await getQuizApi(params);
+                const result: Question[] = await getQuizApi(params);
 
-                console.log(data);
+                const data = result?.map((res: Question) => ({
+                    ...res,
+                    score: 0,
+                    picked: '',
+                    options: [res.correct_answer, ...res.incorrect_answers]
+                                                        .sort(() => 0.5 - Math.random()),
+                }));
                 
                 dispatch(setQuiz(data));
                 
