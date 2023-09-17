@@ -8,14 +8,14 @@
     color: #0f2d5f;
 }
 
-ul {
+.question-container ul {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 20px;
 }
 
-ul li {
+.question-container ul li {
     width: 40%;
     display: flex;
     justify-content: center;
@@ -26,6 +26,6 @@ ul li {
     color: var(--text-clr);
     font-size: 1.5rem;
 }
-ul li:hover {
+.question-container ul li:hover {
     background-color: var(--submit-bg-hvr);
 }
