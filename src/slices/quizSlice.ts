@@ -4,6 +4,7 @@ const initialState: QuizState = {
     questions: [],
     isLoading: true,
     currentIndex: 0,
+    isQuizCompleted: false,
 };
 
 const quizSlice = createSlice({
@@ -17,7 +18,9 @@ const quizSlice = createSlice({
             state.isLoading = payload;
         },
         setCurrentIndex(state) {
-            state.questions.length - 1 === state.currentIndex ? state.currentIndex : state.currentIndex += 1;
+            if (state.questions.length - 1 === state.currentIndex) 
+                state.isQuizCompleted = true  
+            state.currentIndex += 1;
         },
         setPicked(state, { payload }: PayloadAction<string>) {
             const question = state.questions[state.currentIndex];

@@ -6,7 +6,6 @@ import './Quiz.css';
 import { useEffect } from "react";
 import { setCurrentIndex } from "../../slices/quizSlice";
 import { setTimerStart } from "../../slices/timerSlice";
-import Results from "../Results/Results";
 import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
@@ -26,11 +25,13 @@ const Quiz = () => {
         }
     }, [isTimerStop, isQuizCompleted]);
     
-    return !isLoading && (
+    return !isLoading ? !isQuizCompleted && (
         <div className="quiz-container">
             <Question { ...questions[currentIndex] } />
             <Timer />
         </div>
+    ) : (
+        <h1>Ready...</h1>
     );
 }
 
