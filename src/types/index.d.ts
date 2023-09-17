@@ -23,9 +23,15 @@ type Question = {
     type: 'multiple' | 'boolean';
 };
 
+type QuestionState = Question & {
+    score: number;
+    picked: string;
+    options: string[];
+};
+
 type QuizState = {
-    questions: Question[];
+    questions: QuestionState[];
     isLoading: boolean;
     currentIndex: number;
-    picked: string;
+    isQuizCompleted: boolean;
 };
