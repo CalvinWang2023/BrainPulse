@@ -3,5 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 65px;
+}
+
+#layout {
+    flex: 1;
+    display: grid;
+    place-items: center;
 }
