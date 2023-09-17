@@ -1,0 +1,31 @@
+.quiz-container {
+    background-color: var(--alt-bg);
+    border-radius: 12px;
+    box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
+    padding: 1.25rem;
+    width: 60rem;
+    display: grid;
+    gap: 50px;
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.timer-container :is(p) {
+    margin-right: 40px;
+    font-size: 2rem;
+}
+.timer-container :is(svg) {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.timer-container :is(svg, p) {
+    color: #ffffff; 
+}
+
+.timer-container .progress-bar {
+    width: 45rem;
+}

@@ -2,6 +2,7 @@ import { useAppSelector } from "../../app/hooks";
 import useQuizFetch from "../../hooks/useQuizFetch";
 import Question from "../Question/Question";
 import Timer from "./Timer";
+import './Quiz.css';
 
 const Quiz = () => {
     useQuizFetch();
