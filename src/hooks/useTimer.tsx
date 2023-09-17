@@ -8,6 +8,7 @@ const useTimer = () => {
 
     useEffect(() => {
         if (elapsedTime >= initialTime) dispatch(setTimerComplete());
+    
         let interval: ReturnType<typeof setInterval>;
 
         if (delay > 0) {
