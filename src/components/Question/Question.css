@@ -29,3 +29,10 @@
 .question-container ul li:hover {
     background-color: var(--submit-bg-hvr);
 }
+
+.question-container ul li.correct {
+    background-color: var(--correct);
+}
+.question-container ul li.wrong {
+    background-color: var(--incorrect);
+}

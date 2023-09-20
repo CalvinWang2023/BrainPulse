@@ -1,23 +1,28 @@
 import './Question.css';
 import { setCurrentIndex, setPicked, setQuestionScore } from "../../slices/quizSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setTimerStart } from "../../slices/timerSlice";
+import { setTimerStart, setTimerStop } from "../../slices/timerSlice";
 
 interface QuestionProps {
     question: string;
     options: string[];
-    score: number;
+    picked: string;
+    correct_answer: string;
 }
 
-const Question: React.FC<QuestionProps> = ({ question, options, score }) => {  
+const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_answer }) => {  
     const dispatch = useAppDispatch();
-    const { initialTime, elapsedTime } = useAppSelector((state) => state.timer);
+    const { initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
 
     const clickHandler = (option: string) => {
         dispatch(setPicked(option));
         dispatch(setQuestionScore(Math.ceil(initialTime - elapsedTime)));
-        dispatch(setCurrentIndex());
-        dispatch(setTimerStart());
+        dispatch(setTimerStop(true));
+        // Wait for 2 seconds before proceeding
+        setTimeout(() => {
+            dispatch(setCurrentIndex());
+            dispatch(setTimerStart());
+        }, 2000);
     };
 
     const htmlDecoder = (html: string) => {
@@ -31,13 +36,23 @@ const Question: React.FC<QuestionProps> = ({ question, options, score }) => {
             <ul>
                 {options.map((option, index) => {
                     return (
-                        <li key={index} onClick={() => clickHandler(option)}>
+                        <li 
+                            key={index} 
+                            onClick={() => clickHandler(option)}
+                            className={`${
+                                isTimerStop === true && 
+                                option === correct_answer 
+                                ? 'correct' 
+                                : picked === option 
+                                ? 'wrong' 
+                                : ''
+                            }`}
+                        >
                             <p>{htmlDecoder(option)}</p>
                         </li>
                     );
                 })}
             </ul>
-            {/* <h1>score: {score}</h1> */}
         </div>
     );
 }

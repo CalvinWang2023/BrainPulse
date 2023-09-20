@@ -13,12 +13,15 @@ const Quiz = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { isLoading, questions, currentIndex, isQuizCompleted } = useAppSelector((state) => state.quiz);
-    const { isTimerStop } = useAppSelector((state) => state.timer);
+    const { isTimerStop, elapsedTime } = useAppSelector((state) => state.timer);
 
     useEffect(() => {
-        if (isTimerStop === true) {
-            dispatch(setTimerStart());
-            dispatch(setCurrentIndex());
+        if (isTimerStop === true && elapsedTime === 10) {
+            // Wait for 2 seconds before proceeding
+            setTimeout(() => {
+                dispatch(setTimerStart());
+                dispatch(setCurrentIndex());
+            }, 2000);
         }
         if (isQuizCompleted) {
             navigate('/Results');
