@@ -2,6 +2,7 @@ import './Question.css';
 import { setCurrentIndex, setPicked, setQuestionScore } from "../../slices/quizSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setTimerStart, setTimerStop } from "../../slices/timerSlice";
+import { htmlDecoder } from '../Utils';
 
 interface QuestionProps {
     question: string;
@@ -25,11 +26,6 @@ const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_
         }, 2000);
     };
 
-    const htmlDecoder = (html: string) => {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        return doc.documentElement.textContent;
-    };
-    
     return (
         <div className="question-container">
             <h1>{htmlDecoder(question)}</h1>

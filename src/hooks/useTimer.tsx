@@ -8,23 +8,21 @@ const useTimer = () => {
 
     useEffect(() => {
         if (elapsedTime >= initialTime) dispatch(setTimerComplete());
-    
+            
         let interval: ReturnType<typeof setInterval>;
 
         if (delay > 0) {
             interval = setInterval(() => {
-                dispatch(setDelayTime(1));
+                dispatch(setDelayTime(-1));
             }, 1000);
-        }
-
-        if (isTimerStop === false && delay <= 0) {
+        } else if (isTimerStop === false) {
             interval = setInterval(() => {
                 dispatch(setElapsedTime(0.1));
             }, 100);
         }
 
         return () => clearInterval(interval);
-    }, [isTimerStop, elapsedTime, delay]);
+    }, [isTimerStop, elapsedTime, delay, initialTime, dispatch]);
 }
 
-export default useTimer
+export default useTimer;

@@ -5,6 +5,7 @@ const initialState: QuizState = {
     isLoading: true,
     currentIndex: 0,
     isQuizCompleted: false,
+    correct_number: 0,
 };
 
 const quizSlice = createSlice({
@@ -28,7 +29,13 @@ const quizSlice = createSlice({
         },
         setQuestionScore(state, { payload }: PayloadAction<number>) {
             const question = state.questions[state.currentIndex];
-            if (question.correct_answer === question.picked) question.score = payload;
+            if (question.correct_answer === question.picked) {
+                question.score = payload;
+                state.correct_number += 1;
+            }
+        },
+        clearQuiz() {
+            return initialState;
         },
     },
 });
@@ -39,6 +46,7 @@ export const {
     setCurrentIndex,
     setPicked,
     setQuestionScore,
+    clearQuiz,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 const initialState: Timer = {
     initialTime: 10,
     elapsedTime: 0,
-    delay: 2,
+    delay: 3,
     isTimerStop: false,
 };
 
@@ -19,7 +19,7 @@ const timerSlice = createSlice({
         },
         setTimerStart(state) {
             state.elapsedTime = 0;
-            state.delay = 2;
+            state.delay = 3;
             state.isTimerStop = false;
         },
         setTimerComplete(state) {
@@ -27,7 +27,10 @@ const timerSlice = createSlice({
             state.isTimerStop = true;
         },
         setDelayTime(state, { payload }: PayloadAction<number>) {
-            state.delay -= payload;
+            state.delay += payload;
+        },
+        clearTimer() {
+            return initialState;
         },
     },
 });
@@ -38,6 +41,7 @@ export const {
     setTimerStart,
     setTimerComplete,
     setDelayTime,
+    clearTimer,
 } = timerSlice.actions;
 
 export default timerSlice.reducer;

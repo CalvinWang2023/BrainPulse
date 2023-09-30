@@ -20,8 +20,7 @@ const useQuizFetch = () => {
                                                         .sort(() => 0.5 - Math.random()),
                 }));
                 
-                dispatch(setQuiz(data));
-                
+                dispatch(setQuiz(data));   
             } catch (error) {
                 console.log(error);
             } finally {

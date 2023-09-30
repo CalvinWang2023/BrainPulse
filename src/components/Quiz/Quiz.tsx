@@ -8,8 +8,9 @@ import { setCurrentIndex } from "../../slices/quizSlice";
 import { setTimerStart } from "../../slices/timerSlice";
 import { useNavigate } from "react-router-dom";
 
-const Quiz = () => {
+const Quiz = () => {    
     useQuizFetch();
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { isLoading, questions, currentIndex, isQuizCompleted } = useAppSelector((state) => state.quiz);
@@ -26,7 +27,7 @@ const Quiz = () => {
         if (isQuizCompleted) {
             navigate('/Results');
         }
-    }, [isTimerStop, isQuizCompleted]);
+    }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch, navigate]);
     
     return !isLoading ? !isQuizCompleted && (
         <div className="quiz-container">

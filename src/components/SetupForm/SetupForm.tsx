@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const SetupForm = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
     };
 
     return (

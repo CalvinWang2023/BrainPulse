@@ -11,8 +11,10 @@ const Timer = () => {
 
     return (
         <div className="timer-container">
-            {currentTime > 0 ? <HourglassTop /> : <HourglassBottom />}
-            <p>{ currentTime.toFixed(1) }</p>
+            <div className="timer">
+                {currentTime > 0 ? <HourglassTop /> : <HourglassBottom />}
+                <p>{ currentTime.toFixed(1) }</p>
+            </div>
             <ProgressBar total={initialTime} current={currentTime} isTimer={true} />
         </div>
     )

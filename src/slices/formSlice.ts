@@ -17,11 +17,15 @@ const formSlice = createSlice({
         }>) {
             return { ...state, [name]: value };
         },
+        clearForm() {
+            return initialState;
+        },
     },
 });
 
 export const {
     setForm,
+    clearForm,
 } = formSlice.actions;
 
 export default formSlice.reducer;

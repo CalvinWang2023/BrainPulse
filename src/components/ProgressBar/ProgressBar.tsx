@@ -7,7 +7,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ total, current, isTimer = false }) => {
-    const percentage = (current / total) * 100;
+    const percentage = ((current / total) * 100) < 100 ? (current / total) * 100 : 100;
 
     return (
         <div className="progress-bar">
