@@ -35,7 +35,16 @@ const Quiz = () => {
             <Timer />
         </div>
     ) : (
-        <h1>Ready...</h1>
+        <div className="loading-container">
+            <h1>
+                Get Ready
+                <div className="dots">
+                    <span className="dot-animation" />
+                    <span className="dot-animation" />
+                    <span className="dot-animation" />
+                </div>
+            </h1>
+        </div>
     );
 }
 

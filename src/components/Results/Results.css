@@ -23,7 +23,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
     gap: 50px;
 }
 .results-container .results-header h1 {

@@ -32,6 +32,7 @@ ul li {
 ul li button {
     background-color: var(--inp-bg);
     color: var(--text-clr);
+    transition: 0.4s ease;
 } 
 ul li button:hover { 
     background-color: var(--inp-bg-hvr);
@@ -39,7 +40,9 @@ ul li button:hover {
 
 ul li button.active {
     background-color: var(--btn-bg);
+    
 }
+
 ul li button.active:hover {
     background-color: var(--btn-bg-hvr);
 }

@@ -24,7 +24,9 @@ const useQuizFetch = () => {
             } catch (error) {
                 console.log(error);
             } finally {
-                dispatch(setIsLoading(false));
+                setTimeout(() => {
+                    dispatch(setIsLoading(false));
+                }, 3500);
             }
         };
         fetchData();   
