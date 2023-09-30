@@ -34,4 +34,5 @@ type QuizState = {
     isLoading: boolean;
     currentIndex: number;
     isQuizCompleted: boolean;
+    correct_number: number;
 };
