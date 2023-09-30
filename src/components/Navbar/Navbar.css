@@ -8,6 +8,17 @@
     border-radius: 0 0 90px 90px;
 }
 
+#home-button button {
+    background-color: #525272;
+    color: #ffffff;
+    transition: .3s;
+    padding: 12px 1.8rem;
+    font-family: sans-serif;
+}
+#home-button button:hover {
+    background-color: #7f7fa8;
+}
+
 .nav-logo {
     display: flex;
     align-items: center;
@@ -35,6 +46,7 @@
     color: var(--bg-clr);
     font-weight: 700;
     font-size: 1.2rem;
+    font-family: sans-serif;
 }
 .progress-bar {
     width: 40rem;
