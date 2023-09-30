@@ -32,7 +32,34 @@
 
 .question-container ul li.correct {
     background-color: var(--correct);
+    animation: correct-zoom 0.6s ease-in-out;
 }
+
+@keyframes correct-zoom {
+    33% {
+        transform: scale(0.9);
+    }
+    66% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .question-container ul li.wrong {
     background-color: var(--incorrect);
+    animation: incorrect-sway 0.6s ease-in-out;
+}
+
+@keyframes incorrect-sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    30%, 50%, 70%, 90% {
+        transform: translateX(1rem);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(-1rem);
+    }
 }
