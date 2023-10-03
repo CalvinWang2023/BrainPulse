@@ -1,32 +1,31 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import getQuizApi from "../api/getQuizApi";
+import api from "../api/axiosConfig";
 import { setIsLoading, setQuiz } from "../slices/quizSlice";
 
 const useQuizFetch = () => {
     const dispatch = useAppDispatch();
-    const params = useAppSelector((state) => state.form);
+    const { category, amount, difficulty, type } = useAppSelector((state) => state.form);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result: Question[] = await getQuizApi(params);
+                console.log('fetch');
+                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`);
+            
+                const result: Question[] = response.data;
 
                 const data = result?.map((res: Question) => ({
-                    ...res,
-                    score: 0,
-                    picked: '',
-                    options: [res.correct_answer, ...res.incorrect_answers]
-                                                        .sort(() => 0.5 - Math.random()),
+                        ...res,
+                        optionTexts: res.options.map((option: Option) => option.optionText).sort(() => 0.5 - Math.random()),
+                        score: 0,
+                        picked: '',
                 }));
-                
-                dispatch(setQuiz(data));   
+                dispatch(setQuiz(data));
             } catch (error) {
                 console.log(error);
             } finally {
-                setTimeout(() => {
-                    dispatch(setIsLoading(false));
-                }, 3500);
+                dispatch(setIsLoading(false));
             }
         };
         fetchData();   

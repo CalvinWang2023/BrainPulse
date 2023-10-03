@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--alt-bg);
+    background-color: var(--bg-clr);
     padding: 1.5rem 4rem;
     border-radius: 0 0 90px 90px;
 }
@@ -43,7 +43,7 @@
     text-transform: uppercase;
 }
 .nav-progressbar p {
-    color: var(--bg-clr);
+    color: var(--nav-clr);
     font-weight: 700;
     font-size: 1.2rem;
     font-family: sans-serif;
@@ -53,10 +53,47 @@
 }
 
 @media (max-width: 750px) {
+    .nav {
+        padding: 1.5rem 2.5rem; 
+    }
     .nav-logo h1 {
         font-size: 1.5rem;
     }
     .nav-logo svg {
         height: 26px;
+    }
+    .nav-progressbar p {
+        display: none;
+    }
+    #home-button button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .nav-logo h1 {
+        font-size: 1.2rem;
+    }
+    .nav-logo svg {
+        height: 22px;
+    }
+    #home-button button {
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 450px) {
+    .nav-logo h1 {
+        font-size: 1.5rem;
+    }
+    .nav-logo svg {
+        height: 28px;
+        width: 28px;
+    }
+    #home-button button {
+        font-size: 1rem;
+    }
+    .nav {
+        flex-direction: column;
+        gap: 12px;
     }
 }

@@ -5,13 +5,13 @@ import { setTimerStart, setTimerStop } from "../../slices/timerSlice";
 import { htmlDecoder } from '../Utils';
 
 interface QuestionProps {
-    question: string;
-    options: string[];
+    questionText: string;
+    optionTexts: string[];
     picked: string;
-    correct_answer: string;
+    correctAnswer: string;
 }
 
-const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_answer }) => {  
+const Question: React.FC<QuestionProps> = ({ questionText, optionTexts, picked, correctAnswer }) => {  
     const dispatch = useAppDispatch();
     const { initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
 
@@ -19,32 +19,33 @@ const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_
         dispatch(setPicked(option));
         dispatch(setQuestionScore(Math.ceil(initialTime - elapsedTime)));
         dispatch(setTimerStop(true));
-        // Wait for 2 seconds before proceeding
+        // Wait for 1 seconds before proceeding
         setTimeout(() => {
             dispatch(setCurrentIndex());
             dispatch(setTimerStart());
-        }, 2000);
+        }, 1000);
     };
 
     return (
         <div className="question-container">
-            <h1>{htmlDecoder(question)}</h1>
+            <h1>{htmlDecoder(questionText)}</h1>
             <ul>
-                {options.map((option, index) => {
+                {optionTexts?.map((optionText, index) => {
                     return (
                         <li 
                             key={index} 
-                            onClick={() => clickHandler(option)}
+                            onClick={() => clickHandler(optionText)}
                             className={`${
                                 isTimerStop === true && 
-                                option === correct_answer 
+                                optionText === correctAnswer 
                                 ? 'correct' 
-                                : picked === option 
+                                : picked === optionText 
                                 ? 'wrong' 
                                 : ''
                             }`}
+                            style={{ pointerEvents: isTimerStop ? 'none' : 'auto' }}
                         >
-                            <p>{htmlDecoder(option)}</p>
+                            <p>{htmlDecoder(optionText)}</p>
                         </li>
                     );
                 })}

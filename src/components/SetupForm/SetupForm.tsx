@@ -1,11 +1,14 @@
+import { useAppDispatch } from "../../app/hooks";
+import { setPage } from "../../slices/pageSlice";
 import CategoryInput from "./components/CategoryInput";
 import SetupInput from "./components/SetupInput";
 import './SetupForm.css';
-import { Link } from "react-router-dom";
 
 const SetupForm = () => {
+    const dispatch = useAppDispatch();
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        dispatch(setPage("quiz"));
     };
 
     return (
@@ -25,11 +28,9 @@ const SetupForm = () => {
                 label="Type"
                 choices={['multiple', 'boolean']}
                 FormKey="type"
-                altChoiceName={['Multiple Choice', 'True / False']}
+                altChoiceName={['Multiple', 'True / False']}
             />
-            <Link to={'/Quiz'}>
-                <button type="submit">Start Quiz</button>
-            </Link>
+            <button type="submit">Start Quiz</button>
         </form>
     );
 }

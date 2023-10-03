@@ -29,7 +29,7 @@ const quizSlice = createSlice({
         },
         setQuestionScore(state, { payload }: PayloadAction<number>) {
             const question = state.questions[state.currentIndex];
-            if (question.correct_answer === question.picked) {
+            if (question.correctAnswer === question.picked) {
                 question.score = payload;
                 state.correct_number += 1;
             }

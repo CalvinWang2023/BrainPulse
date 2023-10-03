@@ -1,6 +1,6 @@
 form {
     width: 35rem;
-    background-color: var(--alt-bg);
+    background-color: var(--bg-clr);
     border-radius: 12px;
     box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
     padding: 2rem;
@@ -53,7 +53,7 @@ select {
 }
 select::-webkit-scrollbar {
     width: 0.5rem;
-    background-color: var(--alt-bg);
+    background-color: var(--bg-clr);
 }
 select::-webkit-scrollbar-thumb {
     background-color: var(--text-clr);
@@ -71,6 +71,25 @@ button[type="submit"]:hover {
 
 @media (max-width: 750px) {
     form {
-        width: 80%;
+        width: 30rem;
+    }
+}
+@media (max-width: 550px) {
+    form {
+        width: 25rem;
+    }
+    label {
+        font-size: 1.1rem;
+    }
+    option {
+        font-size: 1rem;
+    }
+    ul li button {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 450px) {
+    form {
+        width: 95%;
     }
 }

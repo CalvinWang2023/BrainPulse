@@ -10,8 +10,28 @@
 }
 
 :root {
-	/* colours */
+	/* background */
+	--bg-clr: #6a8ecb;
+	/* nav */
+	--nav-clr: #021d30;
+	/* button */
+	--btn-bg: #0f2d5f;
+	--btn-bg-hvr: #0f2c5fab;
+	/* input */
+	--inp-bg: #475b8e;
+	--inp-bg-hvr: #5b77a3;
+	--submit-bg: #ff9933;
+	--submit-bg-hvr: #ffcc66;
+	/* outline */
+	--outline: #475b8e;
+	/* text */
+	--text-clr: #ffffff; 
+	--label-clr: hsl(240, 20%, 90%);
+	/* right & wrong */
+	--correct: hsl(100, 70%, 60%);
+	--incorrect: hsl(0, 70%, 50%);
 }
+
 
 html {
 	scroll-behavior: smooth;
@@ -25,11 +45,25 @@ body {
 
 button {
 	border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 0.6rem 1.2rem;
     font-size: 1.2rem;
     width: 100%;
 	--webkit-user-select: none;
+	text-transform: capitalize;
 	user-select: none;
     cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+select {
+	border: none;
+	font-size: 1.2rem;
+	width: 100%;
+	border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+	outline: none;
 }

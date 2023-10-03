@@ -1,7 +1,7 @@
-import useTimer from "../../hooks/useTimer";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import { useAppSelector } from "../../app/hooks";
-import { HourglassTop, HourglassBottom } from "../../icons/TimerIcons";
+import useTimer from "../../../hooks/useTimer";
+import ProgressBar from "../../ProgressBar/ProgressBar";
+import { useAppSelector } from "../../../app/hooks";
+import { HourglassTop, HourglassBottom } from "../../../icons/TimerIcons";
 
 const Timer = () => {
     const { initialTime, elapsedTime } = useAppSelector((state) => state.timer);

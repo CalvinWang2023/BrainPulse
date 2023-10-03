@@ -24,10 +24,11 @@ const SetupInput: React.FC<InputProps> = ({ label, choices, FormKey, altChoiceNa
         <div className="setup-container">
             <label>{`Select ${label}:`}</label>
             <ul>
-                {choices.map((choice, index) => {
+                {choices?.map((choice, index) => {
                     return (
                         <li key={index}>
                             <button 
+                                type="button"
                                 className={form[FormKey] === choice ? `active` : `inactive`}
                                 value={choice} 
                                 onClick={handleClick}

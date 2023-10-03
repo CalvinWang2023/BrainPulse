@@ -1,12 +1,14 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import useQuizFetch from "../../hooks/useQuizFetch";
 import Question from "../Question/Question";
-import Timer from "./Timer";
+import Timer from "./components/Timer";
 import './Quiz.css';
 import { useEffect } from "react";
 import { setCurrentIndex } from "../../slices/quizSlice";
 import { setTimerStart } from "../../slices/timerSlice";
 import { useNavigate } from "react-router-dom";
+import { setPage } from "../../slices/pageSlice";
+import HomeModal from "./modal/HomeModal";
 
 const Quiz = () => {    
     useQuizFetch();
@@ -18,22 +20,25 @@ const Quiz = () => {
 
     useEffect(() => {
         if (isTimerStop === true && elapsedTime === 10) {
-            // Wait for 2 seconds before proceeding
+            // Wait for 1 seconds before proceeding
             setTimeout(() => {
                 dispatch(setTimerStart());
                 dispatch(setCurrentIndex());
-            }, 2000);
+            }, 1000);
         }
         if (isQuizCompleted) {
-            navigate('/Results');
+            dispatch(setPage("result"));
         }
     }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch, navigate]);
-    
+    console.log(isLoading);
     return !isLoading ? !isQuizCompleted && (
-        <div className="quiz-container">
-            <Question { ...questions[currentIndex] } />
-            <Timer />
-        </div>
+        <>
+            <HomeModal />
+            <div className="quiz-container">
+                <Question { ...questions[currentIndex] } />
+                <Timer />
+            </div>       
+        </>
     ) : (
         <div className="loading-container">
             <h1>

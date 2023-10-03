@@ -1,22 +1,20 @@
-import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import SetupForm from './components/SetupForm/SetupForm';
 import Quiz from './components/Quiz/Quiz';
 import Results from './components/Results/Results';
-import Layout from './Layout';
+import { useAppSelector } from './app/hooks';
 
 function App() {
+    const { page } = useAppSelector((state) => state.page);
     return (
         <div className="App">
             <Navbar />
-            <Routes>
-                <Route path='/' element={ <Layout /> }>
-                    <Route path='/' element={ <SetupForm /> } />
-                    <Route path='/Quiz' element={ <Quiz /> } />
-                    <Route path='/Results' element={ <Results /> } />
-                </Route>
-            </Routes>
+            <div id="page">
+                { page === "home" && <SetupForm /> }
+                { page === "quiz" && <Quiz /> }
+                { page === "result" && <Results /> }
+            </div>
         </div>
     );
 }

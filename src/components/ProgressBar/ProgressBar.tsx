@@ -12,7 +12,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ total, current, isTimer = fal
     return (
         <div className="progress-bar">
             <div className={`progress ${isTimer ? 'timer-bar' : '' }`} style={{ width: `${percentage}%` }}>
-                {percentage > 0 && !isTimer && `${percentage}%`}
+                {percentage > 0 && !isTimer && `${percentage.toFixed(0)}%`}
             </div>
         </div>
     )

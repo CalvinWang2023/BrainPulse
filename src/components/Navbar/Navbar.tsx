@@ -2,19 +2,27 @@ import "./Navbar.css";
 import { JoyStick } from "../../icons/LogoIcons";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { Link } from "react-router-dom";
 import { clearForm } from "../../slices/formSlice";
 import { clearQuiz } from "../../slices/quizSlice";
 import { clearTimer } from "../../slices/timerSlice";
+import { setHomePage } from "../../slices/pageSlice";
 
 const Navbar = () => {
     const { questions, currentIndex } = useAppSelector((state) => state.quiz);
+    const { page } = useAppSelector((state) => state.page);
     const dispatch = useAppDispatch();
 
     const homeClick = () => {
-        dispatch(clearForm());
-        dispatch(clearQuiz());
-        dispatch(clearTimer());
+        if (page === 'quiz') {
+            const homeModal = document.querySelector('#HomeModal');
+            (homeModal as HTMLDialogElement).showModal();
+        }
+        if (page === 'result') {
+            dispatch(clearForm());
+            dispatch(clearQuiz());
+            dispatch(clearTimer());
+            dispatch(setHomePage());
+        }
     };
 
     const currentQuestion = currentIndex + 1 > questions.length ? currentIndex : currentIndex + 1;
@@ -32,11 +40,9 @@ const Navbar = () => {
                     <ProgressBar total={questions.length} current={currentQuestion} />
                 </div>
             }
-            <Link to={'/'}>
-                <div id="home-button">              
-                    <button onClick={homeClick}>Home</button>             
-                </div>
-            </Link> 
+            <div id="home-button">              
+                <button onClick={homeClick}>Home</button>             
+            </div>
         </nav>
     );
 }

@@ -1,5 +1,5 @@
 .quiz-container {
-    background-color: var(--alt-bg);
+    background-color: var(--bg-clr);
     border-radius: 12px;
     box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
     padding: 1.25rem;
@@ -38,7 +38,7 @@
 
 .loading-container {
     text-align: center;
-    background-color: var(--alt-bg);
+    background-color: var(--bg-clr);
     border-radius: 12px;
     box-shadow: 0 0.3rem 0.3rem 0.3rem var(--outline);
     padding: 1.25rem;
@@ -82,5 +82,75 @@
     }
     50% {
         opacity: 1; 
+    }
+}
+
+@media (max-width: 1100px) {
+    .quiz-container {
+        width: 50rem;
+        gap: 30px;
+    }
+    .loading-container {
+        width: 50rem;
+    }
+    .loading-container h1 {
+        font-size: 3.5rem;
+    }
+    .timer-container .progress-bar {
+        width: 40rem;
+    }
+}
+@media (max-width: 900px) {
+    .quiz-container {
+        width: 40rem;
+    }
+    .loading-container {
+        width: 40rem;
+    }
+    .loading-container h1 {
+        font-size: 3rem;
+    }
+    .timer-container .progress-bar {
+        width: 30rem;
+    }
+}
+@media (max-width: 700px) {
+    .quiz-container {
+        width: 30rem;
+    }
+    .loading-container {
+        width: 30rem;
+    }
+    .loading-container h1 {
+        font-size: 2.5rem;
+    }
+    .timer-container :is(p) {
+        font-size: 1.5rem;
+    }
+    .timer-container :is(svg) {
+        height: 20px;
+        width: 20px;
+    }
+    .timer-container .progress-bar {
+        width: 20rem;
+    }
+}
+@media (max-width: 550px) {
+    .quiz-container {
+        width: 95%;
+    }
+    .loading-container {
+        width: 25rem;
+    }
+    .timer-container .progress-bar {
+        width: 15rem;
+    }
+}
+@media (max-width: 450px) {
+    .loading-container {
+        width: 20rem;
+    }
+    .timer-container .progress-bar {
+        width: 10rem;
     }
 }

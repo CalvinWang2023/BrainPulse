@@ -1,0 +1,61 @@
+#HomeModal {
+    background-color: #3fb6ff;
+    border: 1px #3cb5e0 solid;
+    border-radius: 8px;
+    padding: 30px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    width: 30%;
+}
+#HomeModal .title {
+    text-align: center;
+    color: var(--text-clr);
+}
+#HomeModal .content { 
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--label-clr);
+}
+#HomeModal .button-choices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 12px;
+}
+#HomeModal .button-choices .leave {
+    background-color: rgb(255, 72, 0);
+    transition: .3s;
+}
+#HomeModal .button-choices .cancel {
+    background-color: rgb(127, 221, 185);
+    transition: .3s;
+}
+#HomeModal .button-choices .leave:hover {
+    background-color: rgb(255, 191, 167);
+}
+#HomeModal .button-choices .cancel:hover {
+    background-color: rgb(192, 255, 230);
+}
+
+@media (max-width: 1200px) {
+    #HomeModal {
+        width: 40%;
+    }
+}
+@media (max-width: 1000px) {
+    #HomeModal {
+        width: 50%;
+    }
+}
+@media (max-width: 600px) {
+    #HomeModal {
+        width: 60%;
+    }
+}
