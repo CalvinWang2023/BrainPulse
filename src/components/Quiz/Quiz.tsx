@@ -30,7 +30,7 @@ const Quiz = () => {
             dispatch(setPage("result"));
         }
     }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch, navigate]);
-    console.log(isLoading);
+    
     return !isLoading ? !isQuizCompleted && (
         <>
             <HomeModal />

@@ -10,8 +10,14 @@ const useQuizFetch = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('fetch');
-                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`);
+                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`, {
+                    // query URL without using browser cache
+                    headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                    },
+                });
             
                 const result: Question[] = response.data;
 

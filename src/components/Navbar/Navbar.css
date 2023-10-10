@@ -15,9 +15,6 @@
     padding: 12px 1.8rem;
     font-family: sans-serif;
 }
-#home-button button:hover {
-    background-color: #7f7fa8;
-}
 
 .nav-logo {
     display: flex;
@@ -50,6 +47,12 @@
 }
 .progress-bar {
     width: 40rem;
+}
+
+@media (hover: hover) {
+    #home-button button:hover {
+        background-color: #7f7fa8;
+    }
 }
 
 @media (max-width: 750px) {

@@ -37,11 +37,15 @@
     background-color: rgb(127, 221, 185);
     transition: .3s;
 }
-#HomeModal .button-choices .leave:hover {
-    background-color: rgb(255, 191, 167);
-}
-#HomeModal .button-choices .cancel:hover {
-    background-color: rgb(192, 255, 230);
+
+
+@media (hover: hover) { 
+    #HomeModal .button-choices .leave:hover {
+        background-color: rgb(255, 191, 167);
+    }
+    #HomeModal .button-choices .cancel:hover {
+        background-color: rgb(192, 255, 230);
+    }
 }
 
 @media (max-width: 1200px) {
