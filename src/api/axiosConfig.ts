@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-        baseURL: 'https://localhost:7136'
+        baseURL: 'brainpulse20231011012241.azurewebsites.net'
 });

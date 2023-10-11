@@ -30,7 +30,7 @@ const Quiz = () => {
             dispatch(setPage("result"));
         }
     }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch, navigate]);
-    
+
     return !isLoading ? !isQuizCompleted && (
         <>
             <HomeModal />
@@ -40,16 +40,19 @@ const Quiz = () => {
             </div>       
         </>
     ) : (
-        <div className="loading-container">
-            <h1>
-                Get Ready
-                <div className="dots">
-                    <span className="dot-animation" />
-                    <span className="dot-animation" />
-                    <span className="dot-animation" />
-                </div>
-            </h1>
-        </div>
+        <>
+            <HomeModal />
+            <div className="loading-container">
+                <h1>
+                    Get Ready
+                    <div className="dots">
+                        <span className="dot-animation" />
+                        <span className="dot-animation" />
+                        <span className="dot-animation" />
+                    </div>
+                </h1>
+            </div>        
+        </>
     );
 }
 

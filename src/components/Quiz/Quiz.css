@@ -51,14 +51,14 @@
 .loading-container h1 {
     font-size: 4rem;
     letter-spacing: 2px;
-    color: rgb(237, 237, 46);
+    color: #0f2d5f;
 }
 
 .dot-animation {
     display: inline-block;
     width: 25px;
     height: 25px;
-    background-color: rgb(237, 237, 46);
+    background-color: #0f2d5f;
     border-radius: 50%;
     margin-right: 16px; 
     opacity: 0; 

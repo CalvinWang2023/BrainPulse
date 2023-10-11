@@ -10,14 +10,7 @@ const useQuizFetch = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`, {
-                    // query URL without using browser cache
-                    headers: {
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0',
-                    },
-                });
+                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`);
             
                 const result: Question[] = response.data;
 
@@ -31,7 +24,9 @@ const useQuizFetch = () => {
             } catch (error) {
                 console.log(error);
             } finally {
-                dispatch(setIsLoading(false));
+                setTimeout(() => {
+                    dispatch(setIsLoading(false));
+                }, 1500);
             }
         };
         fetchData();   
