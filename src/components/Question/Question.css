@@ -1,11 +1,13 @@
 .question-container {
     display: grid;
-    gap: 50px;
+    gap: 40px;
     place-items: center;
 }
 .question-container h1 {
     text-align: center;
     color: #0f2d5f;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .question-container ul {
@@ -20,13 +22,13 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    text-align: center;
     background-color: var(--submit-bg);
     border-radius: 16px;
     padding: 1rem 2rem;
     color: var(--text-clr);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
-
 
 .question-container ul li.correct {
     background-color: var(--correct);
@@ -83,7 +85,7 @@
 @media (max-width: 900px) {
     .question-container ul li {
         width: 60%;
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 }
 @media (max-width: 700px) {

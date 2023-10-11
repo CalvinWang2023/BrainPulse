@@ -23,7 +23,7 @@ const CategoryInput = () => {
             >
                 <option value="1">Computer Science</option>
                 <option value="2">Philosophy</option>
-                <option value="3">Japanese Anime</option>
+                <option value="3">Economics</option>
             </select>
         </div>
     )
