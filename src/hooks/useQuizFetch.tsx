@@ -35,7 +35,7 @@ const useQuizFetch = () => {
             } finally {
                 setTimeout(() => {
                     dispatch(setIsLoading(false));
-                }, 1700);        
+                }, 1000);        
             }
         };
         fetchData();   

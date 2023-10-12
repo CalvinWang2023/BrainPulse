@@ -10,6 +10,8 @@ import { setHomePage } from "../../slices/pageSlice";
 const Navbar = () => {
     const { questions, currentIndex } = useAppSelector((state) => state.quiz);
     const { page } = useAppSelector((state) => state.page);
+    const buttonText = page === 'quiz' ? 'Leave' : 'Home';
+
     const dispatch = useAppDispatch();
 
     const homeClick = () => {
@@ -17,7 +19,7 @@ const Navbar = () => {
             const homeModal = document.querySelector('#HomeModal');
             (homeModal as HTMLDialogElement).showModal();
         }
-        if (page === 'result') {
+        if (page === 'result' || page === 'error') {
             dispatch(clearForm());
             dispatch(clearQuiz());
             dispatch(clearTimer());
@@ -41,7 +43,7 @@ const Navbar = () => {
                 </div>
             }
             <div id="home-button">              
-                <button onClick={homeClick}>Home</button>             
+                <button onClick={homeClick}>{buttonText}</button>             
             </div>
         </nav>
     );

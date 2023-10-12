@@ -14,10 +14,11 @@ interface QuestionProps {
 const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_answer }) => {  
     const dispatch = useAppDispatch();
     const { initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
+    const { questions } = useAppSelector((state) => state.quiz);
 
     const clickHandler = (option: string) => {
         dispatch(setPicked(option));
-        dispatch(setQuestionScore(Math.ceil(initialTime - elapsedTime)));
+        dispatch(setQuestionScore((Math.ceil(initialTime - elapsedTime) / initialTime) * (100 / questions.length)));
         dispatch(setTimerStop(true));
         // Wait for 1 seconds before proceeding
         setTimeout(() => {
