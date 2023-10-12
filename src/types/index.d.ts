@@ -2,7 +2,7 @@ type PageState = {
     page: page;
 };
 
-type Page = "home" | "quiz" | "result";
+type Page = "home" | "quiz" | "result" | "error";
 
 type Timer = {
     initialTime: number;
@@ -22,20 +22,17 @@ type FormValue = FormState[keyof FormState];
 
 type Question = {
     category: string;
-    correctAnswer: string;
-    options: Option[];
+    correct_answer: string;
+    incorrect_answers: string[];
     difficulty: 'easy' | 'medium' | 'hard';
-    questionText: string;
-    questionType: 'multiple' | 'boolean';
-};
-type Option = {
-    optionText: string;
+    question: string;
+    type: 'multiple' | 'boolean';
 };
 
 type QuestionState = Question & {
     score: number;
     picked: string;
-    optionTexts: string[];
+    options: string[];
 };
 
 type QuizState = {

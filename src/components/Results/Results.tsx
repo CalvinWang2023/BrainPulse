@@ -49,8 +49,8 @@ const Results = () => {
                     return (
                         <tbody key={index}>
                             <tr>
-                                <td>{htmlDecoder(questionSmy.questionText)}</td>
-                                <td>{htmlDecoder(questionSmy.correctAnswer)}</td>
+                                <td>{htmlDecoder(questionSmy.question)}</td>
+                                <td>{htmlDecoder(questionSmy.correct_answer)}</td>
                                 <td>{htmlDecoder(questionSmy.picked)}</td>
                                 <td>{questionSmy.score}</td>
                             </tr>

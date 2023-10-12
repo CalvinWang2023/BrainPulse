@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: FormState = {
     amount: "5",
-    category: "1",
+    category: "9",
     difficulty: "easy",
     type: "multiple",
 };

@@ -5,13 +5,13 @@ import { setTimerStart, setTimerStop } from "../../slices/timerSlice";
 import { htmlDecoder } from '../Utils';
 
 interface QuestionProps {
-    questionText: string;
-    optionTexts: string[];
+    question: string;
+    options: string[];
     picked: string;
-    correctAnswer: string;
+    correct_answer: string;
 }
 
-const Question: React.FC<QuestionProps> = ({ questionText, optionTexts, picked, correctAnswer }) => {  
+const Question: React.FC<QuestionProps> = ({ question, options, picked, correct_answer }) => {  
     const dispatch = useAppDispatch();
     const { initialTime, elapsedTime, isTimerStop } = useAppSelector((state) => state.timer);
 
@@ -28,24 +28,24 @@ const Question: React.FC<QuestionProps> = ({ questionText, optionTexts, picked, 
 
     return (
         <div className="question-container">
-            <h1>{htmlDecoder(questionText)}</h1>
+            <h1>{htmlDecoder(question)}</h1>
             <ul>
-                {optionTexts?.map((optionText, index) => {
+                {options?.map((option, index) => {
                     return (
                         <li 
                             key={index} 
-                            onClick={() => clickHandler(optionText)}
+                            onClick={() => clickHandler(option)}
                             className={`${
                                 isTimerStop === true && 
-                                optionText === correctAnswer 
+                                option === correct_answer 
                                 ? 'correct' 
-                                : picked === optionText 
+                                : picked === option 
                                 ? 'wrong' 
                                 : ''
                             }`}
                             style={{ pointerEvents: isTimerStop ? 'none' : 'auto' }}
                         >
-                            <p>{htmlDecoder(optionText)}</p>
+                            <p>{htmlDecoder(option)}</p>
                         </li>
                     );
                 })}

@@ -6,7 +6,6 @@ import './Quiz.css';
 import { useEffect } from "react";
 import { setCurrentIndex } from "../../slices/quizSlice";
 import { setTimerStart } from "../../slices/timerSlice";
-import { useNavigate } from "react-router-dom";
 import { setPage } from "../../slices/pageSlice";
 import HomeModal from "./modal/HomeModal";
 
@@ -14,7 +13,6 @@ const Quiz = () => {
     useQuizFetch();
 
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
     const { isLoading, questions, currentIndex, isQuizCompleted } = useAppSelector((state) => state.quiz);
     const { isTimerStop, elapsedTime } = useAppSelector((state) => state.timer);
 
@@ -29,7 +27,7 @@ const Quiz = () => {
         if (isQuizCompleted) {
             dispatch(setPage("result"));
         }
-    }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch, navigate]);
+    }, [isTimerStop, isQuizCompleted, elapsedTime, dispatch]);
 
     return !isLoading ? !isQuizCompleted && (
         <>

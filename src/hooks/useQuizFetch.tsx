@@ -1,30 +1,41 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import api from "../api/axiosConfig";
+import getQuizApi from "../api/getQuizApi";
 import { setIsLoading, setQuiz } from "../slices/quizSlice";
+import { setPage } from "../slices/pageSlice";
 
 const useQuizFetch = () => {
     const dispatch = useAppDispatch();
-    const { category, amount, difficulty, type } = useAppSelector((state) => state.form);
+    const params = useAppSelector((state) => state.form);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get(`/api/Question/${category}/${difficulty}/${type}/${amount}`);
-            
-                const result: Question[] = response.data;
+                const response = await getQuizApi(params);
+                let data;
 
-                const data = result?.map((res: Question) => ({
+                if (!response || response.length === 0) {
+                    // Handle the case where the response is empty
+                    dispatch(setPage('error'));           
+                } else {
+                    data = response?.map((res: Question) => ({
                         ...res,
-                        optionTexts: res.options.map((option: Option) => option.optionText).sort(() => 0.5 - Math.random()),
+                        options: [
+                            res.correct_answer,
+                            ...res.incorrect_answers,
+                        ].sort(() => 0.5 - Math.random()),
                         score: 0,
                         picked: '',
-                }));
-                dispatch(setQuiz(data));
+                    }))
+                }
+
+                if (data.length > 0) dispatch(setQuiz(data));
             } catch (error) {
-                console.log(error);
+                dispatch(setPage('error'));
             } finally {
-                dispatch(setIsLoading(false));
+                setTimeout(() => {
+                    dispatch(setIsLoading(false));
+                }, 1700);        
             }
         };
         fetchData();   
