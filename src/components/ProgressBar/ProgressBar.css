@@ -38,6 +38,6 @@
 }
 @media (max-width: 800px) {
     .progress-bar {
-        width: 9rem;
+        width: 6rem;
     }
 }
