@@ -21,7 +21,7 @@ const Results = () => {
             <div className="results-header">
                 <div className="result">
                     <FinalScore />
-                    <h1>Final Score: {totalScore}</h1>
+                    <h1>Score: {totalScore}</h1>
                 </div>
                 <div className="result">
                     <RightCircle />
